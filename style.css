@@ -1,0 +1,208 @@
+:root {
+  --primary: #FFD700; /* Amarillo Pac-Man */
+  --bg-dark: #000000;
+  --bg-light: #1a1a1a;
+  --text-light: #ffffff;
+  --ghost-orange: #ff9933;
+  --ghost-pink: #ff66cc;
+  --ghost-cyan: #00ffff;
+  --ghost-red: #ff0000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Encabezado */
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+header h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+header p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* Panel de información (Puntos, Vidas, Nivel) */
+#info-panel {
+  background-color: var(--bg-light);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-size: 1.1rem;
+}
+
+/* Botones */
+#controls {
+  margin: 10px 0;
+}
+#controls button {
+  background-color: var(--ghost-pink);
+  color: white;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#controls button:hover {
+  background-color: var(--ghost-orange);
+  transform: scale(1.05);
+}
+
+/* Instrucciones */
+#instructions {
+  background-color: var(--bg-light);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+#instructions .key {
+  display: inline-block;
+  min-width: 30px;
+  padding: 5px;
+  margin: 0 5px;
+  background-color: var(--bg-dark);
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Tablero del juego */
+#game {
+  display: grid;
+  grid-template-columns: repeat(20, 24px);
+  grid-template-rows: repeat(15, 24px);
+  gap: 1px;
+  background-color: var(--bg-dark);
+  margin: 20px 0;
+}
+
+/* Celdas del tablero */
+.cell {
+  width: 24px;
+  height: 24px;
+}
+
+/* Tipos de celdas */
+.wall {
+  background-color: #0033cc;
+}
+
+.pac-dot {
+  background-color: white;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  margin: auto;
+}
+
+.power-pellet {
+  background-color: white;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+}
+
+.ghost-lair {
+  background-color: #444;
+}
+
+/* Personajes */
+.pacman {
+  background-color: var(--primary);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  margin: 0; /* Sin margen */
+}
+
+.pacman.left {
+  transform: rotate(180deg);
+}
+.pacman.right {
+  transform: rotate(0deg);
+}
+.pacman.up {
+  transform: rotate(-90deg);
+}
+.pacman.down {
+  transform: rotate(90deg);
+}
+
+.ghost {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Clases para fantasmas con imagen */
+.blinky {
+  background-image: url('/fantasma-negro.PNG');
+}
+.pinky {
+  background-image: url('/fantasma-azul.PNG');
+}
+.inky {
+  background-image: url('/fantasma-amarillo.PNG');
+}
+.clyde {
+  background-image: url('/fantasma-naranja.PNG');
+}
+
+/* Fantasma asustado */
+.ghost.scared {
+  background-color: rgb(245, 66, 25) !important;
+}
+
+/* Pie de página */
+footer {
+  margin-top: auto;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+  width: 100%;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  #game {
+    transform: scale(0.9);
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  #controls button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  #info-panel {
+    font-size: 1rem;
+  }
+}
