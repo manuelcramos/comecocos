@@ -3,7 +3,6 @@ const gameContainer = document.getElementById('game');
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives');
 const levelDisplay = document.getElementById('level');
-
 const startBtn = document.getElementById('startBtn');
 const resetBtn = document.getElementById('resetBtn');
 
@@ -196,13 +195,48 @@ function checkCollisions() {
   });
 }
 
-// Comprobar si quedan puntos o superpuntos para ganar
+// Comprueba si quedan puntos o superpuntos para ganar
 function checkWin() {
   const hasDots = maze.some(row => row.includes(0) || row.includes(3));
   if (!hasDots) {
-    alert("¡Has ganado!");
+    alert(`¡Nivel ${level} completado!`);
     gameRunning = false;
+    setTimeout(() => {
+      advanceLevel();
+      gameRunning = true;
+      lastTime = 0;
+      requestAnimationFrame(gameLoop);
+    }, 1500);
   }
+}
+
+// Avanza al siguiente nivel hasta el nivel 10
+function advanceLevel() {
+  level++;
+  if (level > 10) {
+    alert("¡Has completado todos los niveles! ¡Eres un maestro del Comecocos!");
+    gameRunning = false;
+    return;
+  }
+
+  // Incrementa la velocidad de los fantasmas en cada nivel
+  ghosts.forEach(g => g.speed += 0.5);
+
+  // Reinicia tablero y posiciones
+  maze = createMaze();
+  pacman.px = 1; pacman.py = 1;
+  pacman.x = 1; pacman.y = 1;
+  pacman.direction = { x: 0, y: 0 };
+  pacman.nextDirection = { x: 0, y: 0 };
+
+  ghosts = createGhosts();
+  ghosts.forEach(g => g.speed += (level - 1) * 0.5); // aumenta velocidad acumulada
+
+  updateHUD();
+  drawMaze();
+  drawPacman();
+  drawGhosts();
+  requestAnimationFrame(gameLoop);
 }
 
 // Dibuja el tablero (paredes, puntos, superpuntos)
@@ -351,4 +385,40 @@ resetBtn.addEventListener('click', () => {
   drawGhosts();
 });
 
+// --- Controles táctiles para móviles ---
+document.querySelectorAll('.mobile-btn').forEach(btn => {
+  btn.addEventListener('touchstart', e => {
+    e.preventDefault();
+    const dir = e.target.getAttribute('data-dir');
+    switch (dir) {
+      case 'up':
+        pacman.nextDirection = { x: 0, y: -1 };
+        break;
+      case 'down':
+        pacman.nextDirection = { x: 0, y: 1 };
+        break;
+      case 'left':
+        pacman.nextDirection = { x: -1, y: 0 };
+        break;
+      case 'right':
+        pacman.nextDirection = { x: 1, y: 0 };
+        break;
+    }
+  });
+});
 
+document.querySelectorAll('.mobile-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const direction = button.dataset.dir;
+    let eventKey;
+    switch (direction) {
+      case 'up': eventKey = 'ArrowUp'; break;
+      case 'down': eventKey = 'ArrowDown'; break;
+      case 'left': eventKey = 'ArrowLeft'; break;
+      case 'right': eventKey = 'ArrowRight'; break;
+    }
+    if (eventKey) {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: eventKey }));
+    }
+  });
+});

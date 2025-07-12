@@ -1,43 +1,71 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Indica que el documento es HTML5 -->
+<html lang="es"> <!-- Inicio del documento HTML, con idioma español -->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Comecocos</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" /> <!-- Codificación de caracteres UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Adaptación para móviles -->
+  <title>Comecocos</title> <!-- Título que se muestra en la pestaña del navegador -->
+  <link rel="stylesheet" href="style.css" /> <!-- Enlace al archivo de estilos CSS -->
 </head>
-<body>
+
+<body> <!-- Cuerpo principal de la página -->
+
+  <!-- Encabezado principal -->
   <header>
-    <h1>COMECOCOS</h1>
-    <p>El clásico juego arcade</p>
+    <h1>COMECOCOS</h1> <!-- Título grande del juego -->
+    <p>El clásico juego arcade</p> <!-- Subtítulo o descripción breve -->
   </header>
 
+  <!-- Panel de información del juego: muestra puntos, vidas y nivel -->
   <section id="info-panel">
     <p>
-      <strong>Puntos:</strong> <span id="score">0</span>
-      &nbsp; <strong>Vidas:</strong> <span id="lives">3</span>
-      &nbsp; <strong>Nivel:</strong> <span id="level">1</span>
+      <strong>Puntos:</strong> <span id="score">0</span> <!-- Contador de puntos -->
+      &nbsp; <strong>Vidas:</strong> <span id="lives">3</span> <!-- Contador de vidas -->
+      &nbsp; <strong>Nivel:</strong> <span id="level">1</span> <!-- Indicador de nivel -->
     </p>
   </section>
 
+  <!-- Botones para comenzar y reiniciar el juego -->
   <section id="controls">
-    <button id="startBtn">Comenzar Juego</button>
-    <button id="resetBtn">Reiniciar</button>
+    <button id="startBtn">Comenzar Juego</button> <!-- Inicia el juego -->
+    <button id="resetBtn">Reiniciar</button> <!-- Reinicia el juego -->
   </section>
 
+  <!-- Instrucciones para jugar desde teclado -->
   <section id="instructions">
     <h3>Controles:</h3>
     <p>Usa las teclas <strong>▲▼◄►</strong> o <strong>W A S D</strong> para mover al Comecocos</p>
   </section>
 
+  <!-- Área principal del juego -->
   <main>
-    <div id="game"></div>
+    <div id="game"></div> <!-- Aquí se genera el tablero con JavaScript -->
   </main>
 
+  <!-- Controles táctiles estilo consola -->
+<div id="mobile-controls">
+  <div class="control-row">
+    <div class="spacer"></div>
+    <button class="mobile-btn" data-dir="up">▲</button>
+    <div class="spacer"></div>
+  </div>
+  <div class="control-row">
+    <button class="mobile-btn" data-dir="left">◀</button>
+    <div class="spacer"></div>
+    <button class="mobile-btn" data-dir="right">▶</button>
+  </div>
+  <div class="control-row">
+    <div class="spacer"></div>
+    <button class="mobile-btn" data-dir="down">▼</button>
+    <div class="spacer"></div>
+  </div>
+</div>
+
+  <!-- Pie de página -->
   <footer>
-    <p>© 2023 Comecocos Neon - Todos los derechos reservados</p>
+    <p>© 2023 Comecocos Neon - Todos los derechos reservados</p> <!-- Texto legal o de autor -->
   </footer>
 
+  <!-- Enlace al archivo JavaScript que controla la lógica del juego -->
   <script src="script.js"></script>
 </body>
 </html>

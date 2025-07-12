@@ -1,98 +1,99 @@
 :root {
-  --primary: #FFD700; /* Amarillo Pac-Man */
-  --bg-dark: #000000;
-  --bg-light: #1a1a1a;
-  --text-light: #ffffff;
-  --ghost-orange: #ff9933;
-  --ghost-pink: #ff66cc;
-  --ghost-cyan: #00ffff;
-  --ghost-red: #ff0000;
+  --primary: #FFD700;        /* Color principal: amarillo del personaje principal */
+  --bg-dark: #000000;        /* Fondo oscuro del juego */
+  --bg-light: #1a1a1a;       /* Fondo claro para paneles e instrucciones */
+  --text-light: #ffffff;     /* Texto blanco para buena visibilidad */
+  --ghost-orange: #ff9933;   /* Color naranja para un botón o personaje */
+  --ghost-pink: #ff66cc;     /* Color rosado para botón o personaje */
+  --ghost-cyan: #00ffff;     /* Cian: posible color de personaje */
+  --ghost-red: #ff0000;      /* Rojo para personaje o indicador */
 }
 
+/* Estilos globales del cuerpo */
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: flex-start;
+  margin: 0;                                /* Elimina márgenes del navegador */
+  font-family: 'Arial', sans-serif;        /* Fuente del texto */
+  background-color: var(--bg-dark);        /* Fondo oscuro */
+  color: var(--text-light);                /* Color del texto blanco */
+  display: flex;                           /* Usa flexbox para organizar el contenido */
+  flex-direction: column;                  /* Organiza en columna */
+  min-height: 100vh;                       /* Ocupa toda la altura de la pantalla */
+  align-items: center;                     /* Centra horizontalmente */
+  justify-content: flex-start;             /* Alinea el contenido al inicio vertical */
 }
 
-/* Encabezado */
+/* Encabezado del juego */
 header {
-  text-align: center;
-  margin-top: 20px;
+  text-align: center;                      /* Centra el texto */
+  margin-top: 20px;                        /* Margen superior */
 }
 header h1 {
-  font-size: 2.5rem;
-  color: var(--primary);
+  font-size: 2.5rem;                       /* Tamaño grande para el título */
+  color: var(--primary);                   /* Color amarillo */
 }
 header p {
-  font-size: 1.2rem;
-  color: #ccc;
+  font-size: 1.2rem;                       /* Tamaño medio del subtítulo */
+  color: #ccc;                             /* Gris claro para el subtítulo */
 }
 
-/* Panel de información (Puntos, Vidas, Nivel) */
+/* Panel que muestra los puntos, vidas y nivel */
 #info-panel {
-  background-color: var(--bg-light);
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin: 15px 0;
-  font-size: 1.1rem;
+  background-color: var(--bg-light);       /* Fondo gris oscuro */
+  padding: 10px 20px;                      /* Espaciado interno */
+  border-radius: 8px;                      /* Bordes redondeados */
+  margin: 15px 0;                          /* Separación arriba y abajo */
+  font-size: 1.1rem;                       /* Tamaño del texto */
 }
 
-/* Botones */
+/* Controles de inicio y reinicio */
 #controls {
   margin: 10px 0;
 }
 #controls button {
-  background-color: var(--ghost-pink);
-  color: white;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: var(--ghost-pink);     /* Color rosado para botones */
+  color: white;                            /* Texto blanco */
+  padding: 10px 20px;                      /* Tamaño del botón */
+  margin: 0 10px;                          /* Espacio entre botones */
+  border: none;                            /* Sin borde */
+  border-radius: 5px;                      /* Bordes redondeados */
+  font-size: 1rem;                         /* Tamaño de texto normal */
+  cursor: pointer;                         /* Cursor tipo puntero */
+  transition: all 0.3s ease;               /* Animación suave al pasar el mouse */
 }
 #controls button:hover {
-  background-color: var(--ghost-orange);
-  transform: scale(1.05);
+  background-color: var(--ghost-orange);   /* Color naranja al pasar el mouse */
+  transform: scale(1.05);                  /* Ligeramente más grande */
 }
 
-/* Instrucciones */
+/* Instrucciones del juego */
 #instructions {
-  background-color: var(--bg-light);
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: center;
+  background-color: var(--bg-light);       /* Fondo gris oscuro */
+  padding: 15px;                           /* Espaciado interno */
+  border-radius: 10px;                     /* Bordes redondeados */
+  margin-top: 20px;                        /* Separación superior */
+  text-align: center;                      /* Centrado */
 }
 #instructions .key {
-  display: inline-block;
-  min-width: 30px;
-  padding: 5px;
-  margin: 0 5px;
-  background-color: var(--bg-dark);
-  border: 2px solid var(--primary);
-  border-radius: 5px;
-  text-align: center;
-  font-weight: bold;
-  color: var(--primary);
+  display: inline-block;                   /* Muestra en línea como bloque */
+  min-width: 30px;                         /* Ancho mínimo */
+  padding: 5px;                            /* Relleno */
+  margin: 0 5px;                           /* Espacio entre teclas */
+  background-color: var(--bg-dark);        /* Fondo negro */
+  border: 2px solid var(--primary);        /* Borde amarillo */
+  border-radius: 5px;                      /* Bordes redondeados */
+  text-align: center;                      /* Centrado de texto */
+  font-weight: bold;                       /* Texto en negrita */
+  color: var(--primary);                   /* Texto amarillo */
 }
 
-/* Tablero del juego */
+/* Área del tablero del juego */
 #game {
-  display: grid;
-  grid-template-columns: repeat(20, 24px);
-  grid-template-rows: repeat(15, 24px);
-  gap: 1px;
-  background-color: var(--bg-dark);
-  margin: 20px 0;
+  display: grid;                           /* Usa grid para distribuir las celdas */
+  grid-template-columns: repeat(20, 24px); /* 20 columnas de 24px */
+  grid-template-rows: repeat(15, 24px);    /* 15 filas de 24px */
+  gap: 1px;                                /* Espacio entre celdas */
+  background-color: var(--bg-dark);        /* Fondo negro */
+  margin: 20px 0;                          /* Margen vertical */
 }
 
 /* Celdas del tablero */
@@ -101,40 +102,38 @@ header p {
   height: 24px;
 }
 
-/* Tipos de celdas */
+/* Tipos de celdas dentro del tablero */
 .wall {
-  background-color: #0033cc;
+  background-color: #0033cc;               /* Azul fuerte para paredes */
 }
-
 .pac-dot {
-  background-color: white;
-  border-radius: 50%;
+  background-color: white;                 /* Punto blanco */
+  border-radius: 50%;                      /* Redondo */
   width: 6px;
   height: 6px;
   margin: auto;
 }
-
 .power-pellet {
-  background-color: white;
+  background-color: white;                 /* Super punto más grande */
   border-radius: 50%;
   width: 12px;
   height: 12px;
   margin: auto;
 }
-
 .ghost-lair {
-  background-color: #444;
+  background-color: #444;                  /* Guarida gris oscuro */
 }
 
-/* Personajes */
+/* Estilo del personaje principal */
 .pacman {
-  background-color: var(--primary);
+  background-color: var(--primary);        /* Color amarillo */
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  margin: 0; /* Sin margen */
+  margin: 0;
 }
 
+/* Dirección visual de Pac-Man usando rotaciones */
 .pacman.left {
   transform: rotate(180deg);
 }
@@ -148,17 +147,18 @@ header p {
   transform: rotate(90deg);
 }
 
+/* Estilo general para fantasmas o enemigos */
 .ghost {
   border-radius: 50%;
   width: 100%;
   height: 100%;
   margin: 0;
-  background-size: contain;
+  background-size: contain;                /* Asegura que la imagen encaje bien */
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* Clases para fantasmas con imagen */
+/* Fantasmas con imágenes específicas */
 .blinky {
   background-image: url('/fantasma-negro.PNG');
 }
@@ -172,29 +172,29 @@ header p {
   background-image: url('/fantasma-naranja.PNG');
 }
 
-/* Fantasma asustado */
+/* Cuando los fantasmas están asustados */
 .ghost.scared {
-  background-color: rgb(245, 66, 25) !important;
+  background-color: rgb(245, 66, 25) !important; /* Rojo/naranja intenso */
 }
 
-/* Pie de página */
+/* Pie de página del juego */
 footer {
   margin-top: auto;
   padding: 15px;
   text-align: center;
   font-size: 0.9rem;
-  color: #aaa;
+  color: #aaa;                             /* Texto gris claro */
   width: 100%;
 }
 
-/* Responsive para móviles */
+/* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 600px) {
   #game {
-    transform: scale(0.9);
+    transform: scale(0.9);                 /* Reduce el tamaño del tablero */
   }
 
   header h1 {
-    font-size: 1.8rem;
+    font-size: 1.8rem;                     /* Título más pequeño */
   }
 
   #controls button {
@@ -204,5 +204,46 @@ footer {
 
   #info-panel {
     font-size: 1rem;
+  }
+/* Estilo para controles móviles en forma de cruz */
+  #mobile-controls {
+   display: none; /* solo visible en móviles */
+  margin-top: 20px;
+  user-select: none;
+}
+}
+.control-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.spacer {
+  width: 60px;
+  height: 60px;
+}
+
+.mobile-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: var(--ghost-pink);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.mobile-btn:active {
+  transform: scale(0.9);
+}
+
+/* Mostrar solo en móviles */
+@media (max-width: 768px) {
+  #mobile-controls {
+    display: block;
   }
 }
